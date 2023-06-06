@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:meta/meta.dart';
 import 'package:signalr_pure/convert.dart';
 import 'package:signalr_pure/sse.dart';
 import 'package:signalr_pure/ws.dart';
-import 'package:meta/meta.dart';
 
 import 'connection.dart';
 import 'http_client.dart';
@@ -513,7 +513,7 @@ class HttpConnection implements Connection {
       return url;
     }
 
-    return url + (url.contains('?') ? '&' : '?') + 'id=$connectionToken';
+    return '$url${url.contains('?') ? '&' : '?'}id=$connectionToken';
   }
 
   Object _resolveTransportOrError(AvailableTransport endpoint,

@@ -1,6 +1,6 @@
-import 'package:signalr_pure/src/signalr/logger.dart' as _i3;
-import 'package:signalr_pure/src/signalr/stream.dart' as _i2;
-import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/mockito.dart' as i1;
+import 'package:signalr_pure/src/signalr/logger.dart' as i3;
+import 'package:signalr_pure/src/signalr/stream.dart' as i2;
 
 // ignore_for_file: comment_references
 
@@ -9,10 +9,10 @@ import 'package:mockito/mockito.dart' as _i1;
 /// A class which mocks [StreamSubscriber].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockStreamSubscriber<T> extends _i1.Mock
-    implements _i2.StreamSubscriber<T> {
+class MockStreamSubscriber<T> extends i1.Mock
+    implements i2.StreamSubscriber<T> {
   MockStreamSubscriber() {
-    _i1.throwOnMissingStub(this);
+    i1.throwOnMissingStub(this);
   }
 
   @override
@@ -25,12 +25,12 @@ class MockStreamSubscriber<T> extends _i1.Mock
 /// A class which mocks [Logger].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLogger extends _i1.Mock implements _i3.Logger {
+class MockLogger extends i1.Mock implements i3.Logger {
   MockLogger() {
-    _i1.throwOnMissingStub(this);
+    i1.throwOnMissingStub(this);
   }
 
   @override
-  void log(_i3.LogLevel? logLevel, String? message) =>
+  void log(i3.LogLevel? logLevel, String? message) =>
       super.noSuchMethod(Invocation.method(#log, [logLevel, message]));
 }

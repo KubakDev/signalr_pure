@@ -32,8 +32,8 @@ class WebSocketTransport implements Transport {
 
     final token = await _accessTokenBuilder?.call();
     if (token != null) {
-      url += (url.contains('?') ? '&' : '?') +
-          'access_token=${Uri.encodeComponent(token)}';
+      url +=
+          '${url.contains('?') ? '&' : '?'}access_token=${Uri.encodeComponent(token)}';
     }
 
     final completer = Completer<void>();

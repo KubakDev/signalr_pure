@@ -3,13 +3,13 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:signalr_pure/convert.dart';
 import 'package:signalr_pure/signalr_pure.dart';
 import 'package:signalr_pure/src/signalr/connection.dart';
 import 'package:signalr_pure/src/signalr/handshake_protocol.dart';
 import 'package:signalr_pure/src/signalr/text_message_format.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import 'common.dart';
@@ -291,7 +291,7 @@ void main() {
           var startCompleted = false;
           final startFuture =
               hubConnection.startAsync().then((_) => startCompleted = true);
-          final data = '{}' + TextMessageFormat.recordSeparator;
+          final data = '{}${TextMessageFormat.recordSeparator}';
           expect(startCompleted, false);
 
           connection.receiveText(data);
@@ -485,16 +485,14 @@ void main() {
               hubConnection.startAsync().then((_) => startCompleted = true);
           expect(startCompleted, false);
 
-          final data = '{}' +
-              TextMessageFormat.recordSeparator +
-              '{"type":6}' +
-              TextMessageFormat.recordSeparator;
+          final data =
+              '{}${TextMessageFormat.recordSeparator}{"type":6}${TextMessageFormat.recordSeparator}';
 
           connection.receiveText(data);
           await startFuture;
 
           expect(receivedProcotolData,
-              '{"type":6}' + TextMessageFormat.recordSeparator);
+              '{"type":6}${TextMessageFormat.recordSeparator}');
         } finally {
           await hubConnection.stopAsync();
         }
