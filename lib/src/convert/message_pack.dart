@@ -451,7 +451,7 @@ class _MessagePackDecoder extends Converter<Uint8List, Object?> {
     }
   }
 
-  bool hasRemaining([size = 1]) {
+  bool hasRemaining([num size = 1]) {
     return view.lengthInBytes - pos >= size;
   }
 
