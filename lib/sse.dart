@@ -1,3 +1,3 @@
-library sse;
+library;
 
 export 'src/sse/event_source.dart';

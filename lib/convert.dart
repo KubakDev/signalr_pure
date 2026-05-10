@@ -1,4 +1,4 @@
-library convert;
+library;
 
 export './src/convert/json.dart';
 export './src/convert/message_pack.dart';

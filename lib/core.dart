@@ -1,4 +1,4 @@
-library core;
+library;
 
 export 'src/core/console.dart';
 export 'src/core/timestamp.dart';
