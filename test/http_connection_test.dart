@@ -191,7 +191,7 @@ void main() {
       await VerifyLogger.runAsync((loggerImpl) async {
         var negotiateCount = 0;
         final options = HttpConnectionOptions(
-            webSocket: (_, _, _) =>
+            webSocket: (__, ___, ____) =>
                 throw Exception('There was an error with the transport.'),
             httpClient: TestHttpClient()
                 .on((r, next) {
@@ -222,9 +222,9 @@ void main() {
       await VerifyLogger.runAsync((loggerImpl) async {
         var negotiateCount = 0;
         final options = HttpConnectionOptions(
-            eventSource: (_, _, _) =>
+            eventSource: (__, ___, ____) =>
                 throw Exception("Don't allow ServerSentEvents."),
-            webSocket: (_, _, _) =>
+            webSocket: (__, ___, ____) =>
                 throw Exception("Don't allow Websockets."),
             httpClient: TestHttpClient()
                 .on((r, next) {
@@ -255,9 +255,9 @@ void main() {
       await VerifyLogger.runAsync((logger) async {
         var negotiateCount = 0;
         final options = HttpConnectionOptions(
-            eventSource: (_, _, _) =>
+            eventSource: (__, ___, ____) =>
                 throw Exception("Don't allow ServerSentEvents."),
-            webSocket: (_, _, _) =>
+            webSocket: (__, ___, ____) =>
                 throw Exception("Don't allow Websockets."),
             httpClient: TestHttpClient()
                 .on((r, next) {
@@ -413,7 +413,7 @@ void main() {
       test('# can be started when transport mask is ${element.item1}',
           () async {
         FakeWebSocket1.wsSet = Completer();
-        final ws = (_, _, _) => FakeWebSocket1();
+        final ws = (__, ___, ____) => FakeWebSocket1();
 
         await VerifyLogger.runAsync((logger) async {
           final options = HttpConnectionOptions(
@@ -464,11 +464,11 @@ void main() {
         () async {
       await VerifyLogger.runAsync((logger) async {
         final options = HttpConnectionOptions(
-          webSocket: (_, _, _) =>
+          webSocket: (_, __, ___) =>
               throw Exception('WebSocket constructor called.'),
           httpClient: TestHttpClient()
-              .on((_, _) => throw Exception('Should not be called'), 'POST')
-              .on((_, _) => throw Exception('Should not be called'), 'GET'),
+              .on((__, ___) => throw Exception('Should not be called'), 'POST')
+              .on((__, ___) => throw Exception('Should not be called'), 'GET'),
           logger: logger,
           skipNegotiation: true,
           transport: HttpTransportType.webSockets,
@@ -1123,7 +1123,7 @@ void main() {
       test('# uses EventSource constructor from options if provided', () async {
         await VerifyLogger.runAsync((logger) async {
           final options = HttpConnectionOptions(
-              eventSource: (_, _, _) => FakeEventSource1(),
+              eventSource: (__, ___, ____) => FakeEventSource1(),
               httpClient: TestHttpClient().on((r, next) {
                 return NegotiateResponse(
                   availableTransports: [
@@ -1156,7 +1156,7 @@ void main() {
       test('# uses WebSocket constructor from options if provided', () async {
         await VerifyLogger.runAsync((logger) async {
           final options = HttpConnectionOptions(
-              webSocket: (_, _, _) => FakeWebSocket2(),
+              webSocket: (__, ___, ____) => FakeWebSocket2(),
               logger: logger,
               skipNegotiation: true,
               transport: HttpTransportType.webSockets);
